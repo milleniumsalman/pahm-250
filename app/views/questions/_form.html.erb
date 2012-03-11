@@ -1,0 +1,80 @@
+<%= form_for @question, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Question</legend>
+
+    <div class="control-group">
+      <%= f.label :question, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :question, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :right, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :right, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :wrong, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :wrong, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :difficulty, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :difficulty, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :chapter, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :chapter, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :hint, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :hint, :rows => 3, :class => 'text_area' %>
+      </div>
+    </div>
+
+	<table class="table">
+		<thead>
+	    <tr>
+	      <th>Answers as given below</th>
+	      <th>Correct option is marked</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<%= f.fields_for :answers do |answer_form| %>
+		<tr>
+		<td>
+		<div class="control-group">			
+			<div class="controls">
+				<%= answer_form.text_field :answer, :class => 'text_field' %>
+			</div>	
+		</div>
+		</td>
+		<td>
+		<div class="control-group">
+			<div class="controls">
+				<%= answer_form.check_box :correct, :class => 'checkbox_field' %>
+			</div>
+		</div>
+		</td>
+		</tr>
+		<% end %>
+	</table>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', questions_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,48 @@
+<h1>Question</h1>
+
+<p>
+  <b>Question</b><br>
+  <%= @question.question %>
+</p>
+
+<p>
+  <b>Right</b><br>
+  <%= @question.right %>
+</p>
+
+<p>
+  <b>Wrong</b><br>
+  <%= @question.wrong %>
+</p>
+
+<p>
+  <b>Difficulty</b><br>
+  <%= @question.difficulty %>
+</p>
+
+<p>
+  <b>Chapter</b><br>
+  <%= @question.chapter %>
+</p>
+
+<p>
+  <b>Hint</b><br>
+  <%= @question.hint %>
+</p>
+
+<% for ans in @question.answers %>
+<p>
+	<b> Answer  || Option (True/False)</b></br>
+	<%=h ans.answer%>
+	<b> || </b>
+	<%=h ans.correct%>	
+</p>
+<% end %>
+
+
+
+<div class="form-actions">
+  <%= link_to 'Back', questions_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_question_path(@question), :class => 'btn' %>
+  <%= link_to 'Delete', question_path(@question), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

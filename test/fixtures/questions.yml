@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  question: MyString
+  right: 1
+  wrong: 1
+  difficulty: 1
+  chapter: 1
+  hint: MyText
+
+two:
+  question: MyString
+  right: 1
+  wrong: 1
+  difficulty: 1
+  chapter: 1
+  hint: MyText
