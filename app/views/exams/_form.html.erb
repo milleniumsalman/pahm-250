@@ -1,0 +1,54 @@
+
+
+<% @questions.each do |question| %>
+
+<p>
+  <strong>Question:</strong>
+  <%= question.question %>
+</p>
+
+<% @quiz_option_selected = QuizOption.find_by_question(question.id) %>
+	
+
+	<%= form_for @quiz_option, :url => { :action => "testpapernext"} do |f| %>
+		
+		<div class="field">
+	    <%= f.hidden_field :question, :value => question.id %>
+	    </div>
+	   
+		<div class="field">
+	    <%= f.hidden_field :user_id, :value => current_user.id %>
+	    </div>
+	
+		<% for ans in question.answers %>
+		<br/>
+		<div class="field">
+			
+			<% if @quiz_option_selected.nil? %>
+			    <%= f.radio_button :answer, ans.id %>
+			<% else %>
+				<% if @quiz_option_selected.answer == ans.id %>
+					<%= f.radio_button :answer, ans.id , :checked => true %>
+					<% else %>	
+					<%= f.radio_button :answer, ans.id %>
+				<% end %>
+			<% end %>
+			
+			<%=h ans.answer%>
+			
+		</div>
+			
+		<% end %>
+		<br/>
+		<br/>
+		
+		<div class="actions">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-check"></i></span>
+					<%= f.submit "Confirm Option", :class => "btn" %>		
+				</div>
+	    </div>
+		
+	<% end %>
+	
+<% end %>

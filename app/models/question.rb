@@ -10,7 +10,6 @@ class Question < ActiveRecord::Base
 
     def self.generate_random
       @a ||= (1..600).to_a.shuffle[1,75]
-
     end
     
     

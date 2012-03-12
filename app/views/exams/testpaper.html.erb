@@ -1,0 +1,21 @@
+
+<% if flash[:notice] %>
+	<%= paginate @questions %>
+<% end %>
+
+
+<%= render 'form' %>
+
+<br/>
+<br/>
+<br/>
+<% if session[:quiz_option_count] %>
+
+	<% if (session[:quiz_option_count] >= 75) %>
+		<%= link_to 'Test Score', testscore_exams_path, :class => "btn btn-primary btn-large" %>
+	<% end %>
+	
+<% end %>
+
+
+

@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   
 #  before_filter :authorize
+   before_filter :authenticate_user!
    
   # GET /questions
   # GET /questions.json

@@ -1,0 +1,28 @@
+<div class="hero-unit">
+
+	<h1>Congratulations !!</h1>
+	<br/>
+	<br/>
+	<p> You have completed the test your score is : <%= @quiz_option_count_correct %> out of 75 </p> 
+	<br/>
+	<br/>
+	<h3> These are the options you selected for each question </h3>
+	<br/>
+	<% for question in @_quiz_option_question %>
+		<p> 
+			<b><%=h question.question %></b>
+			<% @quiz_option_selected = QuizOption.find_by_question(question.id) %>
+			<% if @quiz_option_selected.correct %>
+			<b> <%= image_tag "correct.gif" %> </b>
+			<% else %>
+			<b> <%= image_tag "wrong.gif" %> </b>
+			<% end %>			
+		</p>
+	<% end %>
+	
+	<br/>
+	<p> Your score card will be mailed to your email id <%= current_user.email %> .... shortly </p>
+	<br/>
+	<p>Please press here <%= link_to "take test again", testpaper_exams_path %> if you want to retake the test or press here for ... <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </p>
+	
+</div>
